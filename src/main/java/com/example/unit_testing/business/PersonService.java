@@ -1,5 +1,6 @@
 package com.example.unit_testing.business;
 
+import com.example.unit_testing.infrasctructure.PersonRepository;
 import com.example.unit_testing.infrasctructure.entity.Person;
 import com.example.unit_testing.infrasctructure.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class PersonService {
     public List<Person> findPeopleByCPF(String cpf) {
         try {
             notNull(cpf, "Cpf é obrigatorio!");
-            return respository.findPerson(cpf);
+            return repository.findPerson(cpf);
         } catch(final Exception e) {
             throw new BusinessException(format("Erro ao buscar pessoas por cpf = %s", cpf), e);
         }

@@ -1,10 +1,18 @@
 package com.example.unit_testing.api;
 
 
+import com.example.unit_testing.business.PersonService;
+import com.example.unit_testing.infrasctructure.entity.Person;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 import static java.lang.String.format;
 
@@ -14,13 +22,13 @@ import static java.lang.String.format;
 @Tag(name = "open-api")
 public class PersonController {
 
-    private final PessoaService service;
+    private final PersonService service;
 
-    public PersonController(PessoaService service) {
+    public PersonController(PersonService service) {
         this.service = service;
     }
 
-    @Operation(summary = "Busca pessoa por cpf", method = "GET");
+    @Operation(summary = "Busca pessoa por cpf", method = "GET")
 
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso"),
